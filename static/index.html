@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0d1427" />
+  <title>StudyFlow | Your academic command center</title>
+  <link rel="stylesheet" href="/static/style.css" />
+  <script src="/static/app.js" defer></script>
+</head>
+<body>
+  <div class="shell">
+    <aside class="sidebar">
+      <a href="/" class="brand"><span class="brand-icon">✦</span><span>Study<span class="brand-accent">Flow</span></span></a>
+      <div class="side-label">WORKSPACE</div>
+      <div class="nav-link selected"><span>◫</span> My dashboard</div>
+      <div class="nav-link"><span>◷</span> Study planner</div>
+      <div class="nav-link"><span>◇</span> Project tasks</div>
+      <div class="side-divider"></div>
+      <div class="side-label">PROJECT</div>
+      <div class="project-info"><span class="project-dot"></span><span>HW2 · DevOps Demo</span></div>
+      <div class="sidebar-bottom"><div class="status-point"></div> Server connected <small>FastAPI / SQLite</small></div>
+    </aside>
+    <main class="main">
+      <div class="topbar"><span>Workspace <span class="muted"> / Overview</span></span><span class="today" id="today"></span></div>
+      <section class="hero">
+        <div class="eyebrow">YOUR ACADEMIC COMMAND CENTER</div>
+        <h1>Make progress.<br /><span>Every single day.</span></h1>
+        <p>Keep your assignments, study goals, and projects in one beautiful workspace.</p>
+        <a href="#new-task" class="hero-cta">＋ Add a new task <span>↗</span></a>
+        <div class="hero-art"><div class="orb orb-1"></div><div class="orb orb-2"></div><div class="grid-shape"></div><div class="float-card"><span>✓</span><div><b>You're on track</b><small>One task at a time</small></div></div></div>
+      </section>
+      <section class="stats" aria-label="Task statistics">
+        <div class="stat-card"><div class="stat-heading">Total tasks <span>◫</span></div><div class="stat-value" id="total">—</div><div class="stat-footer">Across your workspace</div></div>
+        <div class="stat-card"><div class="stat-heading">In progress <span>◷</span></div><div class="stat-value" id="pending">—</div><div class="stat-footer"><i class="color-dot orange"></i> Keep the momentum</div></div>
+        <div class="stat-card"><div class="stat-heading">Completed <span>✓</span></div><div class="stat-value" id="done">—</div><div class="stat-footer"><i class="color-dot mint"></i> Wins worth celebrating</div></div>
+      </section>
+      <div class="body-grid">
+        <section class="panel tasks-panel">
+          <div class="panel-title"><div><h2>My tasks</h2><p>Your priorities at a glance</p></div><div class="pill-tabs" role="group" aria-label="Filter tasks"><button data-filter="all" class="active">All</button><button data-filter="pending">Active</button><button data-filter="done">Done</button></div></div>
+          <div id="task-list" aria-live="polite"><div class="loading">Loading tasks…</div></div>
+        </section>
+        <section class="panel form-panel" id="new-task">
+          <div class="form-header"><div class="form-icon">＋</div><h2>Create a task</h2><p>Turn your next goal into action.</p></div>
+          <form id="task-form">
+            <label for="title">TASK NAME</label><input id="title" name="title" maxlength="120" required placeholder="e.g. Review lecture notes" />
+            <label for="category">CATEGORY</label><select id="category" name="category"><option>Study</option><option>Assignment</option><option>Project</option><option>Personal</option></select>
+            <div class="form-row"><div><label for="priority">PRIORITY</label><select id="priority" name="priority"><option value="normal">Normal</option><option value="high">High</option><option value="low">Low</option></select></div><div><label for="due_date">DUE DATE</label><input id="due_date" name="due_date" type="date" /></div></div>
+            <button class="submit-button" type="submit">Create task <span>→</span></button><div class="form-error" id="form-error" role="alert"></div>
+          </form>
+        </section>
+      </div>
+      <footer>Made with <span>♡</span> using FastAPI · GitHub Actions · DevOps pipeline <span class="footer-right">HW2 • Open Source Software Development</span></footer>
+    </main>
+  </div>
+</body>
+</html>
