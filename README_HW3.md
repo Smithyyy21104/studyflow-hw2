@@ -7,6 +7,7 @@ Existing project: https://github.com/Smithyyy21104/studyflow-hw2
 
 Every push to `main` triggers:
 1. **CI**: GitHub-hosted Ubuntu runner tests the FastAPI service.
+2. **Build**: Docker Buildx builds an image for both Apple Silicon and x86 computers.
 3. **Docker Hub**: GitHub Actions pushes both `latest` and an immutable `sha-<commit>` tag.
 4. **CD**: A separate job on a self-hosted runner pulls that commit-tagged image, redeploys the local service with persistent SQLite data, checks `/health`, and restores the last container if startup fails.
 5. **Verification**: `/deployment` reports the actual deployed Git commit, proving the newest push reached the local server.
