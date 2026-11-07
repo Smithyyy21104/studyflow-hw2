@@ -52,7 +52,7 @@ async def lifespan(app: FastAPI):
     yield
 
 
-app = FastAPI(title="StudyFlow - HW2 DevOps Demo", version="1.0.0", lifespan=lifespan)
+app = FastAPI(title="StudyFlow - HW3 Automated Deployment", version="3.0.0", lifespan=lifespan)
 app.mount("/static", StaticFiles(directory=ROOT / "static"), name="static")
 
 
@@ -85,6 +85,13 @@ def home():
 @app.get("/health")
 def health():
     return {"status": "ok", "app": "StudyFlow", "version": app.version}
+
+
+@app.get("/deployment")
+def deployment_status():
+    return {"service": "StudyFlow", "version": app.version,
+            "commit": os.getenv("DEPLOY_VERSION", "local"),
+            "pipeline": "GitHub Actions -> Docker Hub -> self-hosted runner"}
 
 
 @app.get("/api/tasks")
